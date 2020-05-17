@@ -31,13 +31,19 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    #MY APPS
+    'home',
+    'account',
+
+
+    #DJANGO-APPS
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'login',
+    'rest_framework',                #DataFlair
 ]
 
 MIDDLEWARE = [
@@ -55,7 +61,7 @@ ROOT_URLCONF = 'banking_system_backend.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -68,6 +74,8 @@ TEMPLATES = [
     },
 ]
 
+AUTH_USER_MODEL = 'account.Account'
+
 WSGI_APPLICATION = 'banking_system_backend.wsgi.application'
 
 
@@ -78,6 +86,13 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'banking_system_backend',
+        'USER': 'root',
+        'PASSWORD': 'password',
+        'HOST': '',
+        'PORT': '',
+        'OPTIONS': {
+        'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+        }
     }
 }
 
